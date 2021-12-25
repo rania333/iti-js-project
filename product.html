@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="css/Product.css" />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="css/category.css" />
+    <title>Best-Ofer</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <!-- LOGO -->
+        <!-- <img src="logo.png" alt="Best-Ofer" class="logo"> -->
+        <div class="logo" id="#home">Best-Ofer</div>
+        <h3 id="str"></h3>
+        <!-- NAVIGATION MENU -->
+        <ul class="nav-links">
+          <!-- NAVIGATION MENUS -->
+          <div class="menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Product</a></li>
+
+            <!-- <li><a href="./card.html">Cart</a></li> -->
+            <li><a href="./contactUs.html">Contact</a></li>
+            <li><a href="./index.html">Logout</a></li>
+          </div>
+        </ul>
+      </nav>
+    </header>
+    <div class="row responsive">
+      <div id="category" class="col-3">
+        <ul id="catg">
+          <li onmouseover="DropDownItems1()" onmouseleave="hide1()">
+            <i class="fas fa-tshirt"></i> Fashion
+          </li>
+          <li onmouseover="DropDownItems2()" onmouseleave="hide2()">
+            <i class="fas fa-tv"></i> Electronics
+          </li>
+          <li onmouseover="DropDownItems3()" onmouseleave="hide3()">
+            <i class="fas fa-ring"></i> Accessories
+          </li>
+          <li onmouseover="DropDownItems4()" onmouseleave="hide4()">
+            <i class="fas fa-heart"></i> Health & Beauty
+          </li>
+          <li onmouseover="DropDownItems5()" onmouseleave="hide5()">
+            <i class="fas fa-mobile-alt"></i> Phone &Tablet
+          </li>
+          <li onmouseover="DropDownItems6()" onmouseleave="hide6()">
+            <i class="fas fa-laptop"></i> Computing
+          </li>
+          <li onclick="openCart()">
+            <a href="card.html" style="text-decoration: none ; "> <i class="fas fa-shopping-cart"></i>Cart</a> 
+          </li>
+        </ul>
+      </div>
+      <div class="col-4">
+        <ul id="dropFashion">
+          <li>Jacket</li>
+          <li>Boots</li>
+          <li>Heels</li>
+          <li>Pullovers</li>
+          <li>Home Wear</li>
+          <li>Gloves</li>
+        </ul>
+      </div>
+      <div class="col-4">
+        <ul id="dropElectronics">
+          <li>Speackers</li>
+          <li>Cameras</li>
+          <li>Receiver</li>
+          <li>Headphones</li>
+          <li>LED & LCD TVs</li>
+          <li>Streaming Media Player</li>
+        </ul>
+      </div>
+      <div class="col-4">
+        <ul id="dropAccessories">
+          <li>Rings</li>
+          <li>Earring</li>
+          <li>Necklace</li>
+          <li>Jewelry</li>
+        </ul>
+      </div>
+      <div class="col-4">
+        <ul id="dropHealthBeauty">
+          <li>Lipstick</li>
+          <li>Skin Care</li>
+          <li>Hair Care</li>
+          <li>Powder</li>
+          <li>Lip Liners</li>
+          <li>Eyeshadow</li>
+        </ul>
+      </div>
+      <div class="col-4">
+        <ul id="dropPhoneTablet">
+          <li>iPad Tablets</li>
+          <li>Smartphones</li>
+          <li>Tablet Accessories</li>
+          <li>Screen Protectors</li>
+          <li>cables</li>
+          <li>Smart Watches</li>
+        </ul>
+      </div>
+      <div class="col-4">
+        <ul id="dropComputing">
+          <li>Graphic Cards</li>
+          <li>Fans & Coolling</li>
+          <li>Routers</li>
+          <li>Laptops</li>
+          <li>Data Storage</li>
+          <li>Computers</li>
+        </ul>
+      </div>
+      <!-- slder section -->
+      <section class="slider col-9">
+        <img src="img/SlideShow/1.jpg" alt="1" id="Img" />
+      </section>
+    </div>
+    <!-- search section -->
+
+    <section class="search">
+      <h1>Product</h1>
+      <!-- <input id="search" type="text" placeholder="Search.." name="search" />
+      <button type="submit"><i class="fa fa-search"></i></button> -->
+    </section>
+
+    <!-- Product Section -->
+    
+    <section class="product-container" id="products">
+      <!-- <div class="product">
+          <span class="product__price">$120</span>
+          <img class="product__image" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/26438/shoe.png">
+          <h1 class="product__title">Nike Roshe Run Print</h1>
+          <hr />
+          <p>The Nike Roshe One Print Men's Shoe offers breathability, lightweight cushioning and bold style with an injected unit midsole and colorful mesh upper. </p>
+          <a href="#" class="product__btn btn">Buy Now</a>
+        </div>             -->
+    </section>
+    <footer id="footer">
+      <h3>copy right &copy; Best-Ofer 2021. All Rights Reserved.</h3>
+      <h5>Project Team</h5>
+      <h5>NADA - RANIA - MOSTAFA</h5>
+    </footer>
+    <script>
+      //Slider
+      var i = 1;
+      window.onload = function SlideShow() {
+        timer = setInterval(function () {
+          if (i == 3) i = 0;
+          Img.src = "img/SlideShow/" + ++i + ".jpg";
+        }, 4000);
+      };
+
+      window.addEventListener("load", function () {
+        var timer1 = setInterval(function () {
+          var d = new Date();
+          var clock = d.toLocaleTimeString();
+          document.getElementById("str").innerHTML = clock;
+        }, 1000);
+      });
+      //Product
+
+      var product = document.getElementById("products");
+      // product.style.display="grid";
+      // product.style.gridTemplateColumns="repeat(3,1fr) ";
+      var xhr = new XMLHttpRequest();
+      // var x=document.getElementById("search").value;
+      xhr.open("GET", "https://fakestoreapi.com/products/");
+      //console.log("https://fakestoreapi.com/products");
+      xhr.addEventListener("readystatechange", function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          var result = JSON.parse(xhr.response);
+
+          for (var key in result) {
+            var img =
+              "<img class='product__image' src=" + result[key].image + ">";
+            var title =
+              "<h1 class='product__title'>" + result[key].title + "</h1>";
+
+            var cat =
+              "<p><span style='color:#4B6587;font-size:25px'>category:</span>" +
+              result[key].category +
+              "</p>";
+            var price =
+              "<span class='product__price'>Price:" +
+              result[key].price +
+              "</span>";
+            var rate =
+              "<p><span style='color:#4B6587;font-size:20px'>Rate </span>" +
+              result[key].rating["count"] +
+              "</h4>";
+            // var rat="<h4>rate:"+result[key].rating["rate"]+"</h4>";result[0].category
+            //var button="<a class='product__btn btn' id='cclic' " +result[key].id+">Add</a>";
+            var button = `<a class='product__btn btn' id="prodo" id='prod${result[key].id}'> Add </a>`;
+            //add id to each prod container
+            //    rate+rat+
+            product.innerHTML +=
+              "<div class='product  " +result[key].category+"' id=" +
+              result[key].id +
+              ">" +
+              img +
+              title +
+              "<hr />" +
+              cat +
+              rate +
+              price +
+              button +
+              "</div>";
+          }
+       
+
+
+
+          
+          var prodBtn = document.getElementsByClassName("product__btn");
+          [].forEach.call(prodBtn, (singleProd) => {
+            singleProd.addEventListener("click", function (e) {
+              var prodId = e.target.parentElement.parentElement.id;
+              var prodImg =
+                e.target.parentElement.parentElement.firstElementChild.src;
+              var prodTitle =
+                e.target.parentElement.parentElement.children[1].textContent;
+              var prodCat =
+                e.target.parentElement.parentElement.children[3].textContent.split(
+                  ":"
+                )[1];
+              var prodPrice =
+                e.target.parentElement.parentElement.children[4].children[1].textContent.split(
+                  ":"
+                )[1];
+
+              var prodObject = {
+                prodId,
+                prodImg,
+                prodTitle,
+                prodCat,
+                prodPrice,
+                prodQnt: 1, 
+              };
+              
+              addToLocalStorage(prodObject);
+              e.target.parentElement.lastElementChild.innerHTML="Added successfully ";
+              e.target.parentElement.lastElementChild.style. background="#091d4e";
+            
+
+
+
+            });
+          });
+        }
+      });
+
+      xhr.send("");
+      function addToLocalStorage(product) {
+        var prodArr = JSON.parse(localStorage.getItem("products") || "[]");
+        var filteredProd=prodArr.find(p=>p.prodId==product.prodId);
+        if(filteredProd!=undefined){
+          filteredProd.prodQnt+=1;
+        }
+        else{
+          product.prodQnt=1;
+          prodArr.push(product);
+        }
+       
+        localStorage.setItem("products", JSON.stringify(prodArr));
+      }
+
+      //categories
+      var hoverItem1 = document.getElementById("dropFashion");
+      var hoverItem2 = document.getElementById("dropElectronics");
+      var hoverItem3 = document.getElementById("dropAccessories");
+      var hoverItem4 = document.getElementById("dropHealthBeauty");
+      var hoverItem5 = document.getElementById("dropPhoneTablet");
+      var hoverItem6 = document.getElementById("dropComputing");
+      function DropDownItems1() {
+        hoverItem1.style.display = "block";
+      }
+      function hide1() {
+        hoverItem1.style.display = "none";
+      }
+      function DropDownItems2() {
+        hoverItem2.style.display = "block";
+      }
+      function hide2() {
+        hoverItem2.style.display = "none";
+      }
+      function DropDownItems3() {
+        hoverItem3.style.display = "block";
+      }
+      function hide3() {
+        hoverItem3.style.display = "none";
+      }
+      function DropDownItems4() {
+        hoverItem4.style.display = "block";
+      }
+      function hide4() {
+        hoverItem4.style.display = "none";
+      }
+      function DropDownItems5() {
+        hoverItem5.style.display = "block";
+      }
+      function hide5() {
+        hoverItem5.style.display = "none";
+      }
+      function DropDownItems6() {
+        hoverItem6.style.display = "block";
+      }
+      function hide6() {
+        hoverItem6.style.display = "none";
+      }
+      function openCart() {
+        open("index.html", "_self");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap"
+      rel="stylesheet"
+    />
+    <link href="css/SignUp.css" rel="stylesheet" />
+    <title>SignUP</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="signinbox">
+        <img src="img/logo.png" class="logo" />
+        <h1>SignUP</h1>
+        <form onsubmit="return false">
+          <div class="form-group">
+            <div>
+              <label for="Inputname"
+                >NAME:<span id="nspan" class="error">*</span></label
+              >
+
+              <input
+                type="text"
+                name="username"
+                id="Inputname"
+                placeholder="Enter yourName"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <div>
+              <label for="Inputemail"
+                >EMAIL:<span id="espan" class="error">*</span></label
+              >
+
+              <input type="text" id="Inputemail" placeholder="Enter Email" />
+            </div>
+          </div>
+          <div class="form-group">
+            <div>
+              <label for="Inputpassword"
+                >Password:<span id="mspan" class="error">*</span></label
+              >
+
+              <input
+                type="password"
+                name="password"
+                id="Inputpassword"
+                placeholder="Enter Password"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="InputCpassword">
+              Confirm Password:<span id="cspan" class="error">*</span></label
+            >
+            <input
+              type="password"
+              name="Cpassword"
+              id="InputCpassword"
+              placeholder="Enter Password "
+            />
+          </div>
+
+          <div class="form-group">
+            <div class="selectDiv">
+              <label for="InputUsername">Gender:</label>
+              <select id="kind">
+                <option>Male</option>
+                <option>Femal</option></select
+              ><br />
+            </div>
+          </div>
+
+          <button class="button button1" onclick="validate()">SIgnUP</button>
+          <button class="button button1"><a href="index.html">LogIn</a></button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      /*Name Validation*/
+      var regex = /^[a-zA-Z]{1,}$/;
+      /*Passowrd Validation*/
+      var passwordregex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+      /*Email Validation*/
+      var mregex = /^[a-zA-Z]{3,}(@)[a-zA-Z]{5,}(.)(com|net|edu|org).eg$/;
+      function validate() {
+        //console.log(alert("hvsj"));
+        var name = document.getElementById("Inputname").value;
+
+        var password = document.getElementById("Inputpassword").value;
+        var Cpassword = document.getElementById("InputCpassword").value;
+        var email = document.getElementById("Inputemail").value;
+
+        if (regex.test(name)) {
+          document.getElementById("nspan").innerHTML = "";
+        } else {
+          document.getElementById("nspan").innerHTML =
+            "name should be characters only";
+        }
+
+        if (mregex.test(email)) {
+          document.getElementById("espan").innerHTML = "";
+        } else {
+          document.getElementById("espan").innerHTML = "Not Vaild";
+        }
+
+        if (passwordregex.test(password)) {
+          document.getElementById("mspan").innerHTML = "";
+        } else {
+          document.getElementById("mspan").innerHTML =
+            "Minimum eight characters, at least one letter and one number";
+        }
+        if (password != Cpassword) {
+          document.getElementById("cspan").innerHTML = "Pssowrd Not Match";
+        } else {
+          document.getElementById("cspan").innerHTML = "";
+        }
+        if (
+          regex.test(name) &&
+          mregex.test(email) &&
+          passwordregex.test(password) &&
+          password === Cpassword
+        ) {
+          //  submit();
+          addToLocalStorage(email, password);
+          //storein(email,password);
+
+          document.getElementById("Inputname").value = "";
+
+          document.getElementById("Inputpassword").value = "";
+          document.getElementById("InputCpassword").value = "";
+          document.getElementById("Inputemail").value = "";
+        }
+      }
+      /* LOCAL STORAGE */
+
+      function addToLocalStorage(userName, userPassword) {
+        var user = new Array();
+        //var u = new Array();
+        user = JSON.parse(localStorage.getItem("users"))
+          ? JSON.parse(localStorage.getItem("users"))
+          : [];
+        if (
+          user.some(function (val) {
+            return val.UserEmail == userName;
+          })
+        ) {
+          alert("duplicated UserName");
+        } else {
+        //  u.push(userName, userPassword);
+          user.push({
+            UserEmail: userName,
+            UserPassword: userPassword,
+          });
+          alert("SignUP Successfuly");
+         
+        
+        localStorage.setItem("users", JSON.stringify(user));
+       // localStorage.setItem("uss", JSON.stringify(u)); 
+        window.location.href='index.html';
+        // console.log(u);
+       
+        }
+       
+
+      }
+
+      // function storein(task,pass){
+      //  var username ,pasord;
+      //   if(localStorage.getItem('username')===null){
+      //     username=[];
+
+      //   }
+      //   else{
+      //     username=JSON.parse(localStorage.getItem('username'));
+
+      //   }
+      //   if(localStorage.getItem('pasord')===null){
+
+      //   pasord=[];
+      //   }
+      //   else{
+
+      //     pasord=JSON.parse(localStorage.getItem('pasord'));
+      //   }
+
+      //   username.push(task);
+      //   pasord.push( pass);
+      //   localStorage.setItem('username',JSON.stringify(username));
+      //   localStorage.setItem(' pasord',JSON.stringify( pasord));
+      // }
+
+      // function submit() {
+      //   if (typeof Storage !== "undefined") {
+      //     var username=[];
+      //     localStorage.setItem(
+      //       "username",
+      //       document.getElementById("Inputemail").value
+      //     );
+      //     localStorage.setItem(
+      //       "password",
+      //       document.getElementById("Inputpassword").value
+      //     );
+      //   } else {
+      //     alert("Sorry, your browser does not support Web Storage...");
+      //   }
+      // }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap"
+      rel="stylesheet"
+    />
+    <link href="css/SignUp.css" rel="stylesheet" />
+    <title>SignIn</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="signinbox">
+        <img src="img/logo.png" class="logo" />
+        <h1>LogIn</h1>
+
+        <form class="form-horizontal" onsubmit="return false" action="#">
+          <div class="form-group">
+            <div>
+              <label for="Inputemail"
+                >EMAIL:<span id="espan" class="error">*</span></label
+              >
+
+              <input type="text" id="Inputemail" placeholder="Enter Email" />
+            </div>
+          </div>
+          <div class="form-group">
+            <div>
+              <label for="Inputpassword"
+                >Password:<span id="mspan" class="error">*</span></label
+              >
+
+              <input
+                type="password"
+                name="password"
+                id="Inputpassword"
+                placeholder="Enter Password"
+              />
+            </div>
+          </div>
+
+          <button class="button"><a href="SignUp.html">SIgnUP</a></button>
+
+          <!-- Remember Me<input type="checkbox" id="ch" > -->
+          <button class="button" onclick="validate()">SignIn</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+            /*Passowrd Validation Minimum eight characters, at least one letter and one number:*/
+
+            var passwordregex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+            /*Email Validation*/
+            var mregex = /^[a-zA-Z]{3,}(@)[a-zA-Z]{5,}(.)(com|net|edu|org).eg$/;
+            function validate() {
+              //console.log(alert("hvsj"));
+
+              var password = document.getElementById("Inputpassword").value;
+              var email = document.getElementById("Inputemail").value;
+
+              if (mregex.test(email)) {
+                document.getElementById("espan").innerHTML = "";
+              } else {
+                document.getElementById("espan").innerHTML = "Not Vaild";
+              }
+
+              if (passwordregex.test(password)) {
+                document.getElementById("mspan").innerHTML = "";
+              } else {
+                document.getElementById("mspan").innerHTML =
+                  "Minimum eight characters, at least one letter and one number";
+              }
+
+             if (mregex.test(email) && passwordregex.test(password)) {
+                 signin(email,password);
+               }
+            }
+           // signin();
+            function signin(username,password) {
+              console.log("jbkbe");
+             //  var users=new Array();
+              var users= JSON.parse(localStorage.getItem("users"));
+          var success=users.some(function(user){
+              return  (user["UserEmail"]==username&&user["UserPassword"]==password)
+            });
+                 if(success){
+                  window.location.href='product.html';
+             
+                 }
+                else{
+alert("Sign Up First");
+                }
+
+
+
+
+            //  users.some(function(user){
+            //    for (const prop in user) {
+            //      if (user["UserEmail"]==username) {
+            //        console.log("moussa");
+
+            //      }
+            //    }
+            //  })
+               //var str=s.split(",");
+               // document.write(str);
+             // console.log(s);
+              // if (typeof Storage !== "undefined") {
+              //   if (
+              //     document.getElementById("Inputemail").value ==
+              //       localStorage.getItem("users") &&
+              //     document.getElementById("Inputpassword").value ==
+              //       localStorage.getItem("users")
+              //   ) {
+              //     alert(
+              //       "Yoy Are logedIn Successfuly" + localStorage.getItem("username")
+              //     );
+              //     window.open("hello.html");
+              //   } else {
+              //     alert(" sign up first");
+              //   }
+              // }
+            }
+
+
+
+      // var localstring=localStorage.getItem("uss");
+      // // var p=JSON.parse(localstring);
+      // console.log(localstring);
+
+
+
+
+
+            // function checkremember(){
+            //     var inps=document.getElementById("ch");
+            //     var checkbox=inps;
+            //     if(!(checkbox.checked))
+            //     {
+            //          localStorage.removeItem("username");
+            //      localStorage.removeItem("password")
+            //     }
+            //     else if(checkbox.checked){
+            //          saveLocalStorage();
+            //     }
+            // }
+    </script>
+  </body>
+</html>

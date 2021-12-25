@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact Us</title>
+  </head>
+  <style>
+    body {
+      background-image: url(img/4.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    textarea {
+      resize: none;
+    }
+    .ContactUs {
+      width: 500px;
+      height: 550px;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+      float: right;
+      margin-right: 100px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+    .ContactUs h1 {
+      text-align: center;
+      color: white;
+      padding: 20px;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      display: block;
+      background-color: lightgray;
+      margin: 10px auto;
+      padding: 10px;
+      width: 85%;
+      border: none;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      outline: none;
+      background-color: white;
+    }
+    textarea {
+      height: 100px;
+    }
+    button {
+      background-color: lightseagreen;
+      border-radius: 5px;
+      color: white;
+      margin-left: 25px;
+      padding: 10px 25px;
+      font-size: 15px;
+      border: none;
+      text-align: center;
+      margin-top: 20px;
+    }
+    button:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+    span {
+      color: red;
+      margin-left: 25px;
+      font-weight: bold;
+      /*      background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7));
+*/
+      font-size: 15px;
+    }
+    #location {
+      margin-left: 25px;
+    }
+    #labelCheck {
+      color: white;
+    }
+  </style>
+  <body>
+    <div class="ContactUs">
+      <h1>Contact Us</h1>
+      <form onsubmit="return false">
+        <span id="sp1"></span>
+        <input
+          type="text"
+          name="fullName"
+          placeholder="Enter Your Name... "
+          id="name"
+          required
+        />
+        <span id="sp2"></span>
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter Your Email .."
+          id="email"
+          required
+        />
+        <span id="sp3"></span>
+        <textarea
+          placeholder="Enter Your Message Here ..."
+          id="text"
+          required
+        ></textarea>
+        <input
+          type="checkbox"
+          name="getLocation"
+          id="location"
+          onclick="AcceptToGetLocation()"
+        />
+        <label for="location" id="labelCheck"
+          >Enable Us To Get Your Location</label
+        >
+        <br />
+        <button onclick=" check();">Send</button>
+        <button ><a href="product.html" style="text-decoration: none; color: #fff;">Back</a></button>
+      </form>
+    </div>
+
+    <script>
+      var lat, lon, url, fullName, emaill, textarea;
+      //acceptance from user to get location
+      function AcceptToGetLocation() {
+        var ch = document.getElementById("location");
+        if (ch.checked) {
+          getLocation();
+        }
+      }
+      //getlocation for user
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(getPosition);
+        } else {
+          alert("Geolocation not supported in your browser");
+        }
+      }
+      function getPosition(position) {
+        lat = position.coords.latitude;
+        lon = position.coords.longitude;
+        url = "http://maps.google.com/maps?q=" + lat + "," + lon;
+        saveUrl();
+      }
+      //save location in local storage
+      function saveUrl() {
+        localStorage.setItem("latitude", lat);
+        localStorage.setItem("longitude", lon);
+        localStorage.setItem("url", url);
+      }
+      var s1 = document.getElementById("sp1");
+      var s2 = document.getElementById("sp2");
+      var s3 = document.getElementById("sp3");
+      var regxname = /^[a-zA-Z]{3,}\s[a-zA-z]{3,}$/;
+      var regxemail = /^[a-zA-Z]{3,}(@)[a-zA-Z]{3,}(.com)$/;
+      //check validation
+      function check() {
+        fullName = document.getElementById("name").value;
+        emaill = document.getElementById("email").value;
+        textarea = document.getElementById("text").value;
+        if (regxname.test(fullName)) {
+          s1.innerText = " ";
+          console.log("false");
+        } else {
+          s1.innerText = "Enter valid name";
+        }
+        if (regxemail.test(emaill)) {
+          s2.innerText = " ";
+        } else {
+          s2.innerText = "Enter valid Email";
+        }
+        if (regxname.test(fullName) == true && regxemail.test(emaill) == true) {
+          if (textarea == "") {
+            s3.innerText = "Enter message";
+          } else {
+            alert("Your Message Sent Successfully");
+            saveData();
+            open("contactUs.html", "_self");
+          }
+        }
+      }
+      //save information in local storage
+      function saveData() {
+        localStorage.setItem("fullName", fullName);
+        localStorage.setItem("email", emaill);
+        localStorage.setItem("Message", textarea);
+      }
+    </script>
+  </body>
+</html>
